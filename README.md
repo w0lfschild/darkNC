@@ -18,7 +18,9 @@
 2. Download [darkNC](https://github.com/w0lfschild/darkNC/raw/master/build/darkNC.bundle.zip)
 3. Unzip downloads
 4. Open `darkNC.bundle` with `mySIMBL.app`
-5. Restart any application to have darkNC plugin loaded
+5. Open `Terminal.app` and run the command `killall NotificationCenter`
+6. Open `Preferences.app` got to `General` and check `Use dark menu bar and Dock`
+7. Open the Notification Center
 	
 ### License:
 Pretty much the BSD license, just don't repackage it and call it your own please!    
