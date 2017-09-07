@@ -9,7 +9,7 @@
 @import AppKit;
 #import "ZKSwizzle.h"
 
-static const char * const newBackground = nil;
+static const char * const newBackground;
 
 @interface _WB_DNC_NotificationClear : NSObject
 @end
@@ -31,12 +31,19 @@ static const char * const newBackground = nil;
         ZKSwizzle(_WB_DNC_NCNotificationCenterWindowController, NCNotificationCenterWindowController);
         ZKSwizzle(_WB_DNC_NCThirdPartyDisclosuresViewController, NCThirdPartyDisclosuresViewController);
     }
-    NSLog(@"Notification Clear Loaded");
+    NSLog(@"Dark NC loaded");
 }
 
 @end
 
 @implementation _WB_DNC_NCNotificationCenterWindowController
+
+- (BOOL)wb_isDark {
+    BOOL result = false;
+    NSString *osxMode = [[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"];
+    if ([osxMode isEqualToString:@"Dark"]) result = true;
+    return result;
+}
 
 - (void)wb_changeTextColor:(NSView *)view {
     
@@ -50,8 +57,7 @@ static const char * const newBackground = nil;
         
         // Do what you want to do with the subview
         if ([subview respondsToSelector:@selector(setTextColor:)]) {
-            NSString *osxMode = [[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"];
-            if ([osxMode isEqualToString:@"Dark"])
+            if ([self wb_isDark])
                 [(NSTextView*)subview setTextColor:[NSColor whiteColor]];
             else
                 [(NSTextView*)subview setTextColor:[NSColor blackColor]];
@@ -78,8 +84,7 @@ static const char * const newBackground = nil;
         objc_setAssociatedObject(self, newBackground, darkNCBackground, OBJC_ASSOCIATION_RETAIN);
     }
     
-    NSString *osxMode = [[NSUserDefaults standardUserDefaults] stringForKey:@"AppleInterfaceStyle"];
-    if ([osxMode isEqualToString:@"Dark"]) {
+    if ([self wb_isDark]) {
         [tlayer setHidden:true];
         [blayer setHidden:true];
         [darkNCBackground setHidden:false];
