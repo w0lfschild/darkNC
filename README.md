@@ -4,7 +4,7 @@
 
 # Information:
 
-- Designed for 10.12+   
+- Designed for macOS 10.12 and 10.13
 - darkNC is a SIMBL plugin that brings dark mode to Notification Center on macOS   
 - Author: [w0lfschild](https://github.com/w0lfschild)
 
