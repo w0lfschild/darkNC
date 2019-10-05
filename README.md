@@ -8,10 +8,6 @@
 - darkNC is a MacForge plugin that brings dark mode to Notification Center on macOS   
 - Author: [w0lfschild](https://github.com/w0lfschild)
 
-# Note:
-
-- None
-
 # Installation:
 
 1. Download and open [MacForge](https://github.com/w0lfschild/app_updates/raw/master/MacForge/MacForge.zip)
